@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-07-25",
+  "issues": [
+    {
+      "id": "harmony-version-mismatch-typeload",
+      "title": "TypeLoadException at boot after a mod or Harmony update",
+      "explanation": "A mod was built against a different Harmony version than the one loaded, so its assembly fails to load and every def it adds disappears.",
+      "fix": "Make sure Harmony (brrainz.harmony) and the named mod are both up to date, and that only one copy of Harmony is active. Remove any mod that ships its own 0Harmony.dll.",
+      "severity": "critical",
+      "url": "https://github.com/pardeike/HarmonyRimWorld/releases/latest",
+      "match": {
+        "exceptionTypes": ["TypeLoadException", "ReflectionTypeLoadException"],
+        "keywords": ["0harmony", "harmonylib"],
+        "regexes": [],
+        "namespaces": [],
+        "packageIds": []
+      },
+      "reportedBy": "example",
+      "verified": true
+    },
+    {
+      "id": "example-mod-nullref-on-select",
+      "title": "Example: NullReferenceException from Example Mod when selecting a pawn",
+      "explanation": "This is a template entry. Replace the fields with a real bug. Example Mod throws when a colonist has no ideoligion because it assumes one always exists.",
+      "fix": "Update Example Mod to 1.3 or later, or enable Ideology. As a workaround, avoid the mod's Foo feature in its settings.",
+      "severity": "high",
+      "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=000000000",
+      "match": {
+        "exceptionTypes": ["NullReferenceException"],
+        "keywords": ["ExampleMod.PawnFooComp"],
+        "regexes": [],
+        "namespaces": ["ExampleMod"],
+        "packageIds": ["author.examplemod"]
+      },
+      "reportedBy": "example",
+      "verified": false
+    }
+  ]
+}
